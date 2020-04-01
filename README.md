@@ -6,13 +6,13 @@
 
 * aw.test
 
-### Front
+### Frontend
 
 * arnhem.aw.test
 * nijmegen.aw.test
 * aw-net.test
 
-### Back
+### Backend
 
 * arnhem.iw.test
 * nijmegen.iw.test
@@ -22,3 +22,6 @@
 
 * admin.devop.test
 
+## Resources
+
+https://medium.com/@joelennon/dynamic-custom-domain-routing-in-laravel-62c5ffec666b

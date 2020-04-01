@@ -13,6 +13,54 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+# Frontend
+Route::group(
+    ['domain' => '{domain}', 'where' => ['domain' => 'nijmegen.aw.test|arnhem.aw.test|aw-net.test']],
+    function () {
+        Route::get(
+            '/',
+            function ($domain) {
+                return view('frontend')
+                    ->with('domain', $domain);
+            }
+        );
+    }
+);
+
+# Backend
+Route::group(
+    ['domain' => '{domain}', 'where' => ['domain' => 'nijmegen.iw.test|arnhem.iw.test|iw-net.test']],
+    function () {
+        Route::get(
+            '/',
+            function ($domain) {
+                return view('backend')
+                    ->with('domain', $domain);
+            }
+        );
+    }
+);
+
+# Admin
+Route::group(
+    ['domain' => '{domain}', 'where' => ['domain' => 'admin.devop.test']],
+    function () {
+        Route::get(
+            '/',
+            function ($domain) {
+                return view('admin')
+                    ->with('domain', $domain);
+            }
+        );
+    }
+);
+
+# Root domain routes, at the bottom.
+Route::get(
+    '/',
+    function () {
+        return view('landing');
+    }
+);
+
