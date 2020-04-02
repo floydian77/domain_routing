@@ -25,3 +25,4 @@
 ## Resources
 
 https://medium.com/@joelennon/dynamic-custom-domain-routing-in-laravel-62c5ffec666b
+https://laracasts.com/discuss/channels/general-discussion/routing-for-optional-subdomain-domain-and-optional-tld?page=1

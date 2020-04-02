@@ -13,6 +13,8 @@
 <body>
 <div>
     <h1>Frontend domain</h1>
+
+    {{route('backend', ['backendDomain' => 'nijmegen.iw.test'])}}
 </div>
 </body>
 </html>

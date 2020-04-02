@@ -32,7 +32,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         \Route::pattern('domain', '[a-z0-9.\-]+');
 
-        \Route::pattern('frontendDomain', 'nijmegen.aw.test');
+        \Route::pattern('frontendDomain', 'nijmegen.aw.test|arnhem.aw.test');
         \Route::pattern('backendDomain', 'nijmegen.iw.test');
         \Route::pattern('adminDomain', 'admin.devop.test');
         parent::boot();
