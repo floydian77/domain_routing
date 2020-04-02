@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Backend: {{$domain}}</title>
+    <title>Backend</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -13,8 +13,6 @@
 <body>
 <div>
     <h1>Backend domain</h1>
-
-    <pre>{{$domain}}</pre>
 </div>
 </body>
 </html>

@@ -10,8 +10,6 @@
 <body>
 <div>
     <h1>Admin domain</h1>
-
-    <pre>{{$domain}}</pre>
 </div>
 </body>
 </html>

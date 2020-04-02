@@ -14,52 +14,43 @@ use Illuminate\Support\Facades\Route;
 */
 
 # Frontend
-if (request()->getHost() === "nijmegen.aw.test") {
-    Route::group(
-        ['domain' => '{domain}', 'where' => ['domain' => 'nijmegen.aw.test|arnhem.aw.test|aw-net.test']],
-        function () {
-            Route::get(
-                '/',
-                function ($domain) {
-                    return view('frontend')
-                        ->with('domain', $domain);
-                }
-            );
-        }
-    );
-}
+Route::group(
+    ['domain' => 'nijmegen.aw.test'],
+    function () {
+        Route::get(
+            '/',
+            function () {
+                return view('frontend');
+            }
+        )->name('frontend');
+    }
+);
 
 # Backend
-if (request()->getHost() === "nijmegen.iw.test") {
-    Route::group(
-        ['domain' => '{domain}', 'where' => ['domain' => 'nijmegen.iw.test|arnhem.iw.test|iw-net.test']],
-        function () {
-            Route::get(
-                '/',
-                function ($domain) {
-                    return view('backend')
-                        ->with('domain', $domain);
-                }
-            );
-        }
-    );
-}
+Route::group(
+    ['domain' => 'nijmegen.iw.test'],
+    function () {
+        Route::get(
+            '/',
+            function () {
+                return view('backend');
+            }
+        )->name('backend'); // Frontend don't see me, snif, snif.
+    }
+);
 
 # Admin
-if (request()->getHost() === "admin.devop.test") {
-    Route::group(
-        ['domain' => '{domain}', 'where' => ['domain' => 'admin.devop.test']],
-        function () {
-            Route::get(
-                '/',
-                function ($domain) {
-                    return view('admin')
-                        ->with('domain', $domain);
-                }
-            );
-        }
-    );
-}
+Route::group(
+    ['domain' => 'admin.devop.test'],
+    function () {
+        Route::get(
+            '/',
+            function () {
+                return view('admin');
+            }
+        )->name('admin');
+    }
+);
 
 # Root domain routes, at the bottom.
 Route::get(

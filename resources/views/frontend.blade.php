@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Frontend: {{$domain}}</title>
+    <title>Frontend</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -13,8 +13,6 @@
 <body>
 <div>
     <h1>Frontend domain</h1>
-
-    <pre>{{$domain}}</pre>
 </div>
 </body>
 </html>
