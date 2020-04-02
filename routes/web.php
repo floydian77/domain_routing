@@ -13,31 +13,37 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-# Frontend
-Route::group(
-    ['domain' => 'nijmegen.aw.test'],
-    function () {
-        Route::get(
-            '/',
-            function () {
-                return view('frontend');
-            }
-        )->name('frontend');
+function checkFrontendHost() {
+    if (request()->getHttpHost() === 'nijmegen.aw.test') {
+        dump('front check');
+        return request()->getHttpHost();
     }
-);
+}
 
-# Backend
-Route::group(
-    ['domain' => 'nijmegen.iw.test'],
-    function () {
-        Route::get(
-            '/',
-            function () {
-                return view('backend');
-            }
-        )->name('backend'); // Frontend don't see me, snif, snif.
+function checkBackendHost() {
+    if (request()->getHttpHost() === 'nijmegen.iw.test') {
+        dump('back check');
+        return request()->getHttpHost();
     }
-);
+}
+
+Route::domain(checkFrontendHost())->group(function() {
+    Route::get(
+        '/',
+        function () {
+            return view('frontend');
+        }
+    )->name('frontend');
+});
+
+Route::domain(checkBackendHost())->group(function() {
+    Route::get(
+        '/',
+        function () {
+            return view('backend');
+        }
+    )->name('backend');
+});
 
 # Admin
 Route::group(
