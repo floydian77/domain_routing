@@ -13,21 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-function checkFrontendHost() {
-    if (request()->getHttpHost() === 'nijmegen.aw.test') {
-        dump('front check');
-        return request()->getHttpHost();
-    }
-}
-
-function checkBackendHost() {
-    if (request()->getHttpHost() === 'nijmegen.iw.test') {
-        dump('back check');
-        return request()->getHttpHost();
-    }
-}
-
-Route::domain(checkFrontendHost())->group(function() {
+# Frontend
+Route::group(['domain' => '{frontendDomain}'], function () {
     Route::get(
         '/',
         function () {
@@ -36,7 +23,8 @@ Route::domain(checkFrontendHost())->group(function() {
     )->name('frontend');
 });
 
-Route::domain(checkBackendHost())->group(function() {
+# Backend
+Route::group(['domain' => '{backendDomain}'], function () {
     Route::get(
         '/',
         function () {
@@ -46,17 +34,14 @@ Route::domain(checkBackendHost())->group(function() {
 });
 
 # Admin
-Route::group(
-    ['domain' => 'admin.devop.test'],
-    function () {
-        Route::get(
-            '/',
-            function () {
-                return view('admin');
-            }
-        )->name('admin');
-    }
-);
+Route::group(['domain' => '{adminDomain}'], function () {
+    Route::get(
+        '/',
+        function () {
+            return view('admin');
+        }
+    )->name('admin');
+});
 
 # Root domain routes, at the bottom.
 Route::get(
